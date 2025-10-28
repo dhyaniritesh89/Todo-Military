@@ -1,7 +1,7 @@
 const mongoose = require("../db");
 
 const todoSchema = new mongoose.Schema({
-    userId: ObjectId,
+    userId: mongoose.Schema.Types.ObjectId,
     title: String,
     completed: Boolean
 });

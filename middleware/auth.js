@@ -3,7 +3,7 @@ const JWT = require("jsonwebtoken");
 
 function auth(req, res, next) {
     const token = req.body.token;
-    if( !token ) return req.json({ message: "Access denie. No token." })
+    if( !token ) return res.status(401).json({ message: "Access denie. No token." })
 
     try{
         const decoded = JWT.verify(token, process.env.JWT_SECRET);

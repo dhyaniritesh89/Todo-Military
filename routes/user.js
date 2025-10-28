@@ -24,7 +24,7 @@ userRouter.post("/signin", async (req, res) => {
 
     if(!user) res.json({ message: "Soldier not found!!"});
 
-    const isValid = bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.password);
     if(!isValid) res.json({ mesasge: "Invalid credentials."});
     
     const token = JWT.sign({ userId: user._id }, process.env.JWT_SECRET);
