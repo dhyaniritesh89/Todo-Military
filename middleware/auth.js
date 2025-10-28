@@ -1,12 +1,12 @@
 const JWT = require("jsonwebtoken");
-const JWT_SECRET = "bharat_mata_ki_jai";
+
 
 function auth(req, res, next) {
     const token = req.body.token;
     if( !token ) return req.json({ message: "Access denie. No token." })
 
     try{
-        const decoded = JWT.verify(token, JWT_SECRET);
+        const decoded = JWT.verify(token, process.env.JWT_SECRET);
         req.userId = decoded.userId;
         next();
     } catch(err) {

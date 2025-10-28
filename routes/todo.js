@@ -2,12 +2,12 @@ const { auth } = require("../middleware/auth");
 const { Router } = require("express");
 const todoRouter = Router();
 
-todoRouter.post("/todos", auth, (req, res) => {
+todoRouter.post("/create", auth, (req, res) => {
     res.json({
         message: "todos section reached" 
     })
 });
-todoRouter.get("/todos", auth, (req, res) => {
+todoRouter.get("/get", auth, (req, res) => {
     res.json({
         message: "todos section reached" 
     })

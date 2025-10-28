@@ -5,7 +5,6 @@ const userRouter = Router();
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
 const user = require("../models/user");
-const JWT_SECRET = "bharat_mata_ki_jai";
 
 
 userRouter.post("/signup", async (req, res) => {
@@ -28,7 +27,7 @@ userRouter.post("/signin", async (req, res) => {
     const isValid = bcrypt.compare(password, user.password);
     if(!isValid) res.json({ mesasge: "Invalid credentials."});
     
-    const token = JWT.sign({ userId: user._id }, JWT_SECRET);
+    const token = JWT.sign({ userId: user._id }, process.env.JWT_SECRET);
 
     res.json({
         mesasge: "Verification successfull",
